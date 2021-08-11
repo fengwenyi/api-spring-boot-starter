@@ -54,6 +54,11 @@
             <artifactId>api-result</artifactId>
             <version>${api-result.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
     <licenses>
