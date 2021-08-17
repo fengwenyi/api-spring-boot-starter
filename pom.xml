@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-spring-boot-starter</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
+
     <name>api-spring-boot-starter</name>
     <description>Spring Boot API Starter Project</description>
+
     <properties>
         <java.version>1.8</java.version>
         <JavaLib.version>2.1.3</JavaLib.version>
         <api-result.version>2.4.0</api-result.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -76,13 +83,13 @@
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/fengwenyi/result-spring-boot-starter/issues</url>
+        <url>https://github.com/fengwenyi/api-spring-boot-starter/issues</url>
     </issueManagement>
 
     <scm>
-        <url>https://github.com/fengwenyi/result-spring-boot-starter</url>
-        <connection>git@github.com:fengwenyi/result-spring-boot-starter.git</connection>
-        <developerConnection>https://github.com/fengwenyi/result-spring-boot-starter</developerConnection>
+        <url>https://github.com/fengwenyi/api-spring-boot-starter</url>
+        <connection>git@github.com:fengwenyi/api-spring-boot-starter.git</connection>
+        <developerConnection>https://github.com/fengwenyi/api-spring-boot-starter</developerConnection>
     </scm>
 
     <developers>
@@ -100,14 +107,29 @@
             <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
             <!--</plugin>-->
             <!-- Springboot的项目打包给其他项目用的话不能使用自带的打包插件，使用下面的 -->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                </configuration>
             </plugin>
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>-->
             <!-- sonatype提供了自动release的插件，这意味着运行mvn clean deploy后不用手动去close-> release了，此插件会自动release我们的项目到Maven中央仓库。 -->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
