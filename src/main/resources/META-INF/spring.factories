@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.fengwenyi.result.InterceptorConfig
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#  com.fengwenyi.apistarter.config.ApiAutoConfiguration
