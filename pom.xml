@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-spring-boot-starter</artifactId>
-    <version>1.0.0-BUILD</version>
+    <version>1.0.0</version>
     <name>api-spring-boot-starter</name>
     <description>Spring Boot API Starter Project</description>
     <properties>
