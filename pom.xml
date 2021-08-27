@@ -13,7 +13,7 @@
 
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>api-spring-boot-starter</name>
@@ -21,8 +21,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <JavaLib.version>2.1.3</JavaLib.version>
-        <api-result.version>2.4.0</api-result.version>
+        <JavaLib.version>2.1.4</JavaLib.version>
+        <api-result.version>2.4.2</api-result.version>
     </properties>
 
     <dependencies>
