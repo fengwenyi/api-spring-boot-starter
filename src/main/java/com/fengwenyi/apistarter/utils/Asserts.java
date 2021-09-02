@@ -3,8 +3,10 @@ package com.fengwenyi.apistarter.utils;
 
 import com.fengwenyi.api.result.IReturnCode;
 import com.fengwenyi.apistarter.exception.ApiException;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -57,6 +59,18 @@ public class Asserts {
      */
     public static void notNull(Object obj, String msg) {
         if (Objects.isNull(obj)) {
+            fail(msg);
+        }
+    }
+
+
+    /**
+     * 断言集合不为空，为空将抛出 {@link ApiException} 异常
+     * @param collection 待判断的集合
+     * @param msg 为空提示信息
+     */
+    public static void notEmpty(Collection<?> collection, String msg) {
+        if (CollectionUtils.isEmpty(collection)) {
             fail(msg);
         }
     }
