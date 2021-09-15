@@ -4,8 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.util.Objects;
-
 /**
  *
  * ApplicationContext 工具类
@@ -28,9 +26,7 @@ public class SpringContextUtils implements ApplicationContextAware {
      * @return ApplicationContext
      */
     public static ApplicationContext getContext() {
-        if (Objects.isNull(context)) {
-            Asserts.fail("无法获取ApplicationContext");
-        }
+        Asserts.notNull(context, "获取ApplicationContext失败");
         return context;
     }
 }
