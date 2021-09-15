@@ -32,3 +32,8 @@ implementation("com.fengwenyi:api-spring-boot-starter:1.0.1")
 - [x] [自定义注解参数校验](wiki/constraints.md)
 - [x] [工具类](wiki/utils.md)
 
+
+## 更新日志
+
+[更新日志](LOG.md)
+
