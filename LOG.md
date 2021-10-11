@@ -1,5 +1,12 @@
 # 更新日志
 
+## v1.1.0
+
+2021.10.11
+
+- 【变更】ApiException -> BizException
+- 【变更】全局异常处理，BizException异常HTTP状态码为200
+
 ## v1.0.1
 
 2021.09.15

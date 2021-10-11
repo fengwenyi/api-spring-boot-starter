@@ -11,32 +11,32 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ApiException extends RuntimeException {
+public class BizException extends RuntimeException {
 
     private IReturnCode returnCode;
 
-    public ApiException() {
+    public BizException() {
     }
 
-    public ApiException(String message) {
+    public BizException(String message) {
         super(message);
     }
 
-    public ApiException(IReturnCode returnCode) {
+    public BizException(IReturnCode returnCode) {
         this.returnCode = returnCode;
     }
 
-    public ApiException(IReturnCode returnCode, String message) {
+    public BizException(IReturnCode returnCode, String message) {
         super(message);
         this.returnCode = returnCode;
     }
 
-    public ApiException(IReturnCode returnCode, Throwable cause) {
+    public BizException(IReturnCode returnCode, Throwable cause) {
         super(cause);
         this.returnCode = returnCode;
     }
 
-    public ApiException(IReturnCode returnCode, Throwable cause, String message) {
+    public BizException(IReturnCode returnCode, Throwable cause, String message) {
         super(message, cause);
         this.returnCode = returnCode;
     }
