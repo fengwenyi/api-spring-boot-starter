@@ -29,4 +29,13 @@ public class SpringContextUtils implements ApplicationContextAware {
         Asserts.notNull(context, "获取ApplicationContext失败");
         return context;
     }
+
+    /**
+     * 根据bean名称获取bean对象
+     * @param beanName bean名称
+     * @return bean对象
+     */
+    public static Object getBean(String beanName) {
+        return getContext().getBean(beanName);
+    }
 }

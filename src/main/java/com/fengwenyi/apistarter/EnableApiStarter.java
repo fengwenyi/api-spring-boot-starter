@@ -18,5 +18,4 @@ import java.lang.annotation.*;
 @Import({ApiAutoConfiguration.class})
 public @interface EnableApiStarter {
 
-
 }

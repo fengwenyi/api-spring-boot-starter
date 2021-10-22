@@ -8,34 +8,30 @@ import com.fengwenyi.api.result.IReturnCode;
  */
 public enum ReturnCode implements IReturnCode {
 
-    // 系统异常
-    ERROR("100001", "系统异常")
-
     // 参数相关异常
-    , PARAM_MISS("101001", "参数缺失")
-    , PARAM_VALIDATED("101002", "参数校验失败")
-    , PARAM_EXCEPTION("101003", "参数异常")
+    PARAM_MISS(101001, "参数缺失")
+    , PARAM_VALIDATED(101002, "参数校验失败")
 
     ;
 
     // 错误码
-    private final String errCode;
+    private final int code;
 
     // 错误信息
-    private final String msg;
+    private final String message;
 
-    ReturnCode(String errCode, String msg) {
-        this.errCode = errCode;
-        this.msg = msg;
+    ReturnCode(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
     @Override
-    public String getErrCode() {
-        return errCode;
+    public Integer getCode() {
+        return code;
     }
 
     @Override
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 }

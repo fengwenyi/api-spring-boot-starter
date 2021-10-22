@@ -4,8 +4,17 @@
 
 2021.10.11
 
-- 【变更】ApiException -> BizException
-- 【变更】全局异常处理，BizException异常HTTP状态码为200
+- 【新增】新增删除状态枚举 `DeleteState`。
+- 【新增】新增启用状态枚举 `EnabledState`。
+- 【新增】SpringContextUtils类，新增getBean(beanName)。
+- 【变更】ApiException -> BizException。
+- 【变更】全局异常处理，BizException异常HTTP状态码为200。
+- 【变更】业务基础类，releaseStatus -> enableState。
+- 【变更】业务基础类，deleteStatus -> deleteState。
+- 【变更】全局异常处理，默认错误响应码。
+- 【优化】完善注释。
+- 【升级】api-result -> 2.5.0。
+- 【升级】spring boot -> 2.5.5。
 
 ## v1.0.1
 
