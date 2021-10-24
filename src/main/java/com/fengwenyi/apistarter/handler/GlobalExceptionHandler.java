@@ -2,7 +2,6 @@ package com.fengwenyi.apistarter.handler;
 
 import com.fengwenyi.api.result.IReturnCode;
 import com.fengwenyi.api.result.ResponseTemplate;
-import com.fengwenyi.apistarter.enums.ReturnCode;
 import com.fengwenyi.apistarter.exception.BizException;
 import com.fengwenyi.javalib.util.MdcUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +38,7 @@ public class GlobalExceptionHandler {
         log.error("MissingServletRequestParameterException, uri:{}", request.getRequestURI());
         log.error("msg={}", e.getParameterName());
         MdcUtils.clear();
-        return ResponseTemplate.fail(ReturnCode.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
+        return ResponseTemplate.fail(IReturnCode.Default.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
     }
 
     // 参数校验失败异常
@@ -60,7 +59,7 @@ public class GlobalExceptionHandler {
         }
         log.error("msg={}", errMsgJoiner);
         MdcUtils.clear();
-        return ResponseTemplate.fail(ReturnCode.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
+        return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
@@ -77,7 +76,7 @@ public class GlobalExceptionHandler {
         }
         log.error("msg={}", errMsgJoiner);
         MdcUtils.clear();
-        return ResponseTemplate.fail(ReturnCode.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
+        return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
     }
 
     // 业务异常

@@ -13,8 +13,8 @@
 - 【变更】业务基础类，deleteStatus -> deleteState。
 - 【变更】全局异常处理，默认错误响应码。
 - 【优化】完善注释。
-- 【升级】api-result -> 2.5.0。
-- 【升级】spring boot -> 2.5.5。
+- 【升级】api-result -> 2.5.1。
+- 【升级】spring boot -> 2.5.6。
 
 ## v1.0.1
 
