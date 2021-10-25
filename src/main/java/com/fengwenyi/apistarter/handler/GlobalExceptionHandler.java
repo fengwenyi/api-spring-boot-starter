@@ -2,7 +2,7 @@ package com.fengwenyi.apistarter.handler;
 
 import com.fengwenyi.api.result.IReturnCode;
 import com.fengwenyi.api.result.ResponseTemplate;
-import com.fengwenyi.apistarter.exception.BizException;
+import com.fengwenyi.apistarter.exception.ApiException;
 import com.fengwenyi.javalib.util.MdcUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -79,11 +79,15 @@ public class GlobalExceptionHandler {
         return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
     }
 
-    // 业务异常
-    // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(BizException.class)
-    public ResponseTemplate<Void> bizExceptionHandler(HttpServletRequest request, BizException e) {
-        log.error("BizException, uri:{}", request.getRequestURI());
+    /**
+     * Api Exception
+     * @param request 请求
+     * @param e {@link ApiException}
+     * @return 异常信息
+     */
+    @ExceptionHandler(ApiException.class)
+    public ResponseTemplate<Void> apiExceptionHandler(HttpServletRequest request, ApiException e) {
+        log.info("ApiException, uri:{}", request.getRequestURI());
         IReturnCode returnCode = e.getReturnCode();
         String message = e.getMessage();
         if (Objects.isNull(returnCode)) {

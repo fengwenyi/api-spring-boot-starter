@@ -11,32 +11,34 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BizException extends RuntimeException {
+public class ApiException extends RuntimeException {
+
+    private static final long serialVersionUID = -5829546532420722185L;
 
     private IReturnCode returnCode;
 
-    public BizException() {
+    public ApiException() {
     }
 
-    public BizException(String message) {
+    public ApiException(String message) {
         super(message);
     }
 
-    public BizException(IReturnCode returnCode) {
+    public ApiException(IReturnCode returnCode) {
         this.returnCode = returnCode;
     }
 
-    public BizException(IReturnCode returnCode, String message) {
+    public ApiException(IReturnCode returnCode, String message) {
         super(message);
         this.returnCode = returnCode;
     }
 
-    public BizException(IReturnCode returnCode, Throwable cause) {
+    public ApiException(IReturnCode returnCode, Throwable cause) {
         super(cause);
         this.returnCode = returnCode;
     }
 
-    public BizException(IReturnCode returnCode, Throwable cause, String message) {
+    public ApiException(IReturnCode returnCode, Throwable cause, String message) {
         super(message, cause);
         this.returnCode = returnCode;
     }

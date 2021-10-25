@@ -2,7 +2,7 @@ package com.fengwenyi.apistarter.utils;
 
 
 import com.fengwenyi.api.result.IReturnCode;
-import com.fengwenyi.apistarter.exception.BizException;
+import com.fengwenyi.apistarter.exception.ApiException;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -21,7 +21,7 @@ public class Asserts {
      * @param msg 描述
      */
     public static void fail(String msg) {
-        throw new BizException(msg);
+        throw new ApiException(msg);
     }
 
     /**
@@ -29,7 +29,7 @@ public class Asserts {
      * @param returnCode {@link IReturnCode}
      */
     public static void fail(IReturnCode returnCode) {
-        throw new BizException(returnCode);
+        throw new ApiException(returnCode);
     }
 
     /**
@@ -38,11 +38,11 @@ public class Asserts {
      * @param msg 描述
      */
     public static void fail(IReturnCode returnCode, String msg) {
-        throw new BizException(returnCode, msg);
+        throw new ApiException(returnCode, msg);
     }
 
     /**
-     * 断言字符串不为空，为空将抛出 {@link BizException} 异常
+     * 断言字符串不为空，为空将抛出 {@link ApiException} 异常
      * @param str 待判断的字符串
      * @param msg 为空提示信息
      */
@@ -53,7 +53,7 @@ public class Asserts {
     }
 
     /**
-     * 断言对象不为空，为空将抛出 {@link BizException} 异常
+     * 断言对象不为空，为空将抛出 {@link ApiException} 异常
      * @param obj 待判断的对象
      * @param msg 为空提示信息
      */
@@ -65,7 +65,7 @@ public class Asserts {
 
 
     /**
-     * 断言集合不为空，为空将抛出 {@link BizException} 异常
+     * 断言集合不为空，为空将抛出 {@link ApiException} 异常
      * @param collection 待判断的集合
      * @param msg 为空提示信息
      */
