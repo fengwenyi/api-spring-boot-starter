@@ -1,4 +1,6 @@
 #!/bin/zsh
+version=`awk '/<version>[^<]+<\/version>/{gsub(/<version>|<\/version>/,"",$1);print $1;exit;}' pom.xml`
+echo $version
 mvn clean deploy -P release -DskipTests
-git tag -a 1.1.0 -m 'v1.1.0'
-git push origin 1.1.0
+git tag -a $version -m "v$version"
+git push origin $version
