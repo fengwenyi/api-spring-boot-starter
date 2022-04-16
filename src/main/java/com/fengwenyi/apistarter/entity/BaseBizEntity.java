@@ -20,14 +20,15 @@ public class BaseBizEntity extends BaseEntity {
 
     /**
      * 启用状态
-     * @see com.fengwenyi.apistarter.enums.EnabledState
+     * @see com.fengwenyi.apistarter.constant.EnabledState
      */
     private Boolean enabledState;
 
     /**
      * 删除状态
-     * @see com.fengwenyi.apistarter.enums.DeleteState
+     * @see com.fengwenyi.apistarter.constant.DeletedState
+     * @since 1.2.0
      */
-    private Boolean deleteState;
+    private Boolean deletedState;
 
 }

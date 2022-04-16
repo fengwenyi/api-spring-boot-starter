@@ -6,6 +6,7 @@
 
 - 【新增】启用状态常量 com.fengwenyi.apistarter.constant.EnabledState
 - 【新增】删除状态常量 com.fengwenyi.apistarter.constant.DeletedState
+- 【变更】BaseBizEntity 逻辑删除字段改为 deletedState
 - 【升级】api-result -> 2.6.0
 - 【删除】弃用状态枚举 com.fengwenyi.apistarter.enums.EnabledState
 - 【删除】删除状态枚举 com.fengwenyi.apistarter.enums.DeleteState
