@@ -1,9 +1,5 @@
 package com.fengwenyi.apistarter.constraints;
 
-/**
- * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
- * @since 2021-08-09
- */
 import com.fengwenyi.apistarter.validator.PhoneValidator;
 
 import javax.validation.Constraint;
