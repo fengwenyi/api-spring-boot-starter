@@ -3,7 +3,6 @@ package com.fengwenyi.apistarter.handler;
 import com.fengwenyi.api.result.IReturnCode;
 import com.fengwenyi.api.result.ResponseTemplate;
 import com.fengwenyi.apistarter.exception.ApiException;
-import com.fengwenyi.javalib.util.MdcUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -37,7 +36,6 @@ public class GlobalExceptionHandler {
     public ResponseTemplate<Void> missingServletRequestParameterExceptionHandler(HttpServletRequest request, MissingServletRequestParameterException e) {
         log.error("MissingServletRequestParameterException, uri:{}", request.getRequestURI());
         log.error("msg={}", e.getParameterName());
-        MdcUtils.clear();
         return ResponseTemplate.fail(IReturnCode.Default.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
     }
 
@@ -58,7 +56,6 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        MdcUtils.clear();
         return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
     }
 
@@ -75,7 +72,6 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        MdcUtils.clear();
         return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
     }
 
@@ -99,7 +95,6 @@ public class GlobalExceptionHandler {
             return ResponseTemplate.fail(returnCode, message);
         }
         log.error("code={}, message={}", returnCode.getCode(), returnCode.getMessage());
-        MdcUtils.clear();
         return ResponseTemplate.fail(returnCode);
     }
 
@@ -108,7 +103,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseTemplate<Void> exceptionHandler(HttpServletRequest request, Exception e) {
         log.error("Exception, uri:{}", request.getRequestURI(), e);
-        MdcUtils.clear();
         return ResponseTemplate.fail();
     }
 

@@ -149,6 +149,13 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+        <repository>
+            <id>aliyun-public</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
+
     <profiles>
         <profile>
             <id>release</id>
