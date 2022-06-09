@@ -1,6 +1,6 @@
 package com.fengwenyi.apistarter.exception;
 
-import com.fengwenyi.api.result.IReturnCode;
+import com.fengwenyi.apistarter.enums.ApiResult;
 
 /**
  * 参数异常
@@ -16,6 +16,6 @@ public class ParamException extends ApiException {
 
     public ParamException(String message) {
         super(message);
-        this.setReturnCode(IReturnCode.Default.PARAM_EXCEPTION);
+        this.setReturnCode(ApiResult.PARAM_EXCEPTION);
     }
 }

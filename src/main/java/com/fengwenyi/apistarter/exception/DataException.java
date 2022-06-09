@@ -1,6 +1,6 @@
 package com.fengwenyi.apistarter.exception;
 
-import com.fengwenyi.api.result.IReturnCode;
+import com.fengwenyi.apistarter.enums.ApiResult;
 
 /**
  * 数据异常
@@ -16,6 +16,6 @@ public class DataException extends ApiException{
 
     public DataException(String message) {
         super(message);
-        this.setReturnCode(IReturnCode.Default.DATA_SAVE_FAILURE);
+        this.setReturnCode(ApiResult.DATA_EXCEPTION);
     }
 }

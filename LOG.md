@@ -2,9 +2,13 @@
 
 ## v1.3.1
 
-2022.05.16 ~ 
+2022.05.16 ~ 2022.06.10
 
-- 【新增】新增 ParamException
+- 【新增】 新增 ParamException
+- 【优化】 统一异常处理，HTTP状态码都返回 200
+- 【优化】 api-result 不再提供结果码，由业务自定义
+- 【升级】 spring boot 2.6.8
+- 【升级】 api-result 2.6.1
 
 
 

@@ -2,16 +2,15 @@ package com.fengwenyi.apistarter.handler;
 
 import com.fengwenyi.api.result.IReturnCode;
 import com.fengwenyi.api.result.ResponseTemplate;
+import com.fengwenyi.apistarter.enums.ApiResult;
 import com.fengwenyi.apistarter.exception.ApiException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,16 +31,14 @@ public class GlobalExceptionHandler {
 
     // 参数缺失异常
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseTemplate<Void> missingServletRequestParameterExceptionHandler(HttpServletRequest request, MissingServletRequestParameterException e) {
         log.error("MissingServletRequestParameterException, uri:{}", request.getRequestURI());
         log.error("msg={}", e.getParameterName());
-        return ResponseTemplate.fail(IReturnCode.Default.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
+        return ResponseTemplate.fail(ApiResult.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
     }
 
     // 参数校验失败异常
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseTemplate<Void> handleParamCheckException(HttpServletRequest request, MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException, uri:{}", request.getRequestURI());
         BindingResult bindingResult = e.getBindingResult();
@@ -56,11 +53,10 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
+        return ResponseTemplate.fail(ApiResult.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseTemplate<Void> constraintViolationExceptionHandler(HttpServletRequest request, ConstraintViolationException e) {
         log.error("ConstraintViolationException, uri:{}", request.getRequestURI());
         Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
@@ -72,7 +68,7 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        return ResponseTemplate.fail(IReturnCode.Default.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
+        return ResponseTemplate.fail(ApiResult.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
     }
 
     /**
@@ -100,7 +96,6 @@ public class GlobalExceptionHandler {
 
     // 系统异常
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseTemplate<Void> exceptionHandler(HttpServletRequest request, Exception e) {
         log.error("Exception, uri:{}", request.getRequestURI(), e);
         return ResponseTemplate.fail();
