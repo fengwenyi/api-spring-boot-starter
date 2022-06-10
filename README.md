@@ -10,14 +10,14 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-spring-boot-starter</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
 </dependency>
 ```
 
 **Gradle**
 
 ```groovy
-implementation("com.fengwenyi:api-spring-boot-starter:1.3.1")
+implementation("com.fengwenyi:api-spring-boot-starter:1.3.2")
 ```
 
 ### 开启注解
