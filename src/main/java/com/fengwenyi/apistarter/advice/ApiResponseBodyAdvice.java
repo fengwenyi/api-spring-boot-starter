@@ -1,6 +1,6 @@
 package com.fengwenyi.apistarter.advice;
 
-import com.fengwenyi.api.result.ResponseTemplate;
+import com.fengwenyi.api.result.ResultTemplate;
 import com.fengwenyi.apistarter.annotation.IgnoreResponseAdvice;
 import com.fengwenyi.apistarter.utils.JacksonJsonUtils;
 import org.springframework.core.MethodParameter;
@@ -50,14 +50,14 @@ public class ApiResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                                   ServerHttpRequest request,
                                   ServerHttpResponse response) {
 
-        ResponseTemplate<Object> responseTemplate = ResponseTemplate.success();
+        ResultTemplate<Object> responseTemplate = ResultTemplate.success();
 
         if (Objects.isNull(body)) {
             return responseTemplate;
-        } else if (body instanceof ResponseTemplate) {
+        } else if (body instanceof ResultTemplate) {
             return body;
         } else if (body instanceof String) {
-            return JacksonJsonUtils.convertString(ResponseTemplate.success(body));
+            return JacksonJsonUtils.convertString(ResultTemplate.success(body));
         } else {
             return responseTemplate.setBody(body);
         }

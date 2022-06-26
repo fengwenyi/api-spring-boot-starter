@@ -1,6 +1,6 @@
 package com.fengwenyi.apistarter.exception;
 
-import com.fengwenyi.api.result.IReturnCode;
+import com.fengwenyi.api.result.Result;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ public class ApiException extends RuntimeException {
 
     private static final long serialVersionUID = -5829546532420722185L;
 
-    private IReturnCode returnCode;
+    private Result result;
 
     public ApiException() {
     }
@@ -24,23 +24,23 @@ public class ApiException extends RuntimeException {
         super(message);
     }
 
-    public ApiException(IReturnCode returnCode) {
-        this.returnCode = returnCode;
+    public ApiException(Result result) {
+        this.result = result;
     }
 
-    public ApiException(IReturnCode returnCode, String message) {
+    public ApiException(Result result, String message) {
         super(message);
-        this.returnCode = returnCode;
+        this.result = result;
     }
 
-    public ApiException(IReturnCode returnCode, Throwable cause) {
+    public ApiException(Result result, Throwable cause) {
         super(cause);
-        this.returnCode = returnCode;
+        this.result = result;
     }
 
-    public ApiException(IReturnCode returnCode, Throwable cause, String message) {
+    public ApiException(Result result, Throwable cause, String message) {
         super(message, cause);
-        this.returnCode = returnCode;
+        this.result = result;
     }
 }
 

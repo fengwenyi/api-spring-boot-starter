@@ -1,5 +1,15 @@
 # 更新日志
 
+## v1.4.0
+
+2022.06.27 ~ 
+
+:arrow_up: Dependency Upgrades
+
+- Upgrade to Spring Boot 2.7.1
+- Upgrade to Api Result 2.7.0
+
+
 ## v1.3.2
 
 2022.05.16 ~ 2022.06.10

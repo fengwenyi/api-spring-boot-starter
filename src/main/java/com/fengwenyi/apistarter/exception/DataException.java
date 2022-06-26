@@ -16,6 +16,6 @@ public class DataException extends ApiException{
 
     public DataException(String message) {
         super(message);
-        this.setReturnCode(ApiResult.DATA_EXCEPTION);
+        this.setResult(ApiResult.DATA_EXCEPTION);
     }
 }

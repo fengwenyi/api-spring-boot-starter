@@ -1,7 +1,7 @@
 package com.fengwenyi.apistarter.handler;
 
-import com.fengwenyi.api.result.IReturnCode;
-import com.fengwenyi.api.result.ResponseTemplate;
+import com.fengwenyi.api.result.Result;
+import com.fengwenyi.api.result.ResultTemplate;
 import com.fengwenyi.apistarter.enums.ApiResult;
 import com.fengwenyi.apistarter.exception.ApiException;
 import lombok.extern.slf4j.Slf4j;
@@ -31,15 +31,15 @@ public class GlobalExceptionHandler {
 
     // 参数缺失异常
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    public ResponseTemplate<Void> missingServletRequestParameterExceptionHandler(HttpServletRequest request, MissingServletRequestParameterException e) {
+    public ResultTemplate<Void> missingServletRequestParameterExceptionHandler(HttpServletRequest request, MissingServletRequestParameterException e) {
         log.error("MissingServletRequestParameterException, uri:{}", request.getRequestURI());
         log.error("msg={}", e.getParameterName());
-        return ResponseTemplate.fail(ApiResult.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
+        return ResultTemplate.fail(ApiResult.PARAM_MISS, "参数缺失异常: [" + e.getParameterName() + "]");
     }
 
     // 参数校验失败异常
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseTemplate<Void> handleParamCheckException(HttpServletRequest request, MethodArgumentNotValidException e) {
+    public ResultTemplate<Void> handleParamCheckException(HttpServletRequest request, MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException, uri:{}", request.getRequestURI());
         BindingResult bindingResult = e.getBindingResult();
         StringJoiner errMsgJoiner = new StringJoiner(",", "[", "]");
@@ -53,11 +53,11 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        return ResponseTemplate.fail(ApiResult.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
+        return ResultTemplate.fail(ApiResult.PARAM_VALIDATED, "参数检验失败: " + errMsgJoiner);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseTemplate<Void> constraintViolationExceptionHandler(HttpServletRequest request, ConstraintViolationException e) {
+    public ResultTemplate<Void> constraintViolationExceptionHandler(HttpServletRequest request, ConstraintViolationException e) {
         log.error("ConstraintViolationException, uri:{}", request.getRequestURI());
         Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
         StringJoiner errMsgJoiner = new StringJoiner(",", "[", "]");
@@ -68,7 +68,7 @@ public class GlobalExceptionHandler {
             }
         }
         log.error("msg={}", errMsgJoiner);
-        return ResponseTemplate.fail(ApiResult.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
+        return ResultTemplate.fail(ApiResult.PARAM_VALIDATED, "参数校验失败: " + errMsgJoiner);
     }
 
     /**
@@ -78,27 +78,27 @@ public class GlobalExceptionHandler {
      * @return 异常信息
      */
     @ExceptionHandler(ApiException.class)
-    public ResponseTemplate<Void> apiExceptionHandler(HttpServletRequest request, ApiException e) {
+    public ResultTemplate<Void> apiExceptionHandler(HttpServletRequest request, ApiException e) {
         log.info("ApiException, uri:{}", request.getRequestURI());
-        IReturnCode returnCode = e.getReturnCode();
+        Result result = e.getResult();
         String message = e.getMessage();
-        if (Objects.isNull(returnCode)) {
+        if (Objects.isNull(result)) {
             log.error("msg={}", message);
-            return ResponseTemplate.fail(message);
+            return ResultTemplate.fail(message);
         }
         if (StringUtils.hasText(message)) {
-            log.error("code={}, message={}", returnCode.getCode(), message);
-            return ResponseTemplate.fail(returnCode, message);
+            log.error("code={}, message={}", result.getCode(), message);
+            return ResultTemplate.fail(result, message);
         }
-        log.error("code={}, message={}", returnCode.getCode(), returnCode.getMessage());
-        return ResponseTemplate.fail(returnCode);
+        log.error("code={}, message={}", result.getCode(), result.getMsg());
+        return ResultTemplate.fail(result);
     }
 
     // 系统异常
     @ExceptionHandler(Exception.class)
-    public ResponseTemplate<Void> exceptionHandler(HttpServletRequest request, Exception e) {
-        log.error("Exception, uri:{}", request.getRequestURI(), e);
-        return ResponseTemplate.fail();
+    public ResultTemplate<Void> exceptionHandler(HttpServletRequest request, Exception e) {
+        log.error("Exception, uri: [{}], err: [{}]", request.getRequestURI(), e.getLocalizedMessage(), e);
+        return ResultTemplate.fail();
     }
 
 }

@@ -1,12 +1,12 @@
 package com.fengwenyi.apistarter.enums;
 
-import com.fengwenyi.api.result.IReturnCode;
+import com.fengwenyi.api.result.Result;
 
 /**
  * @author <a href="https://fengwenyi.com">Erwin Feng</a>
  * @since 2022-06-09
  */
-public enum ApiResult implements IReturnCode {
+public enum ApiResult implements Result {
 
     PARAM_EXCEPTION("PARAM_EXCEPTION", "参数异常")
     , PARAM_ILLEGAL("PARAM_ILLEGAL", "参数非法")
@@ -32,7 +32,9 @@ public enum ApiResult implements IReturnCode {
     }
 
     @Override
-    public String getMessage() {
+    public String getMsg() {
         return msg;
     }
+
+
 }

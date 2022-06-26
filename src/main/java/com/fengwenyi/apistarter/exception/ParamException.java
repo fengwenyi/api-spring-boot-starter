@@ -16,6 +16,6 @@ public class ParamException extends ApiException {
 
     public ParamException(String message) {
         super(message);
-        this.setReturnCode(ApiResult.PARAM_EXCEPTION);
+        this.setResult(ApiResult.PARAM_EXCEPTION);
     }
 }

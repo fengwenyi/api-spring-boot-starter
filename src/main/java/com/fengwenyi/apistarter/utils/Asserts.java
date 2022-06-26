@@ -1,7 +1,6 @@
 package com.fengwenyi.apistarter.utils;
 
-
-import com.fengwenyi.api.result.IReturnCode;
+import com.fengwenyi.api.result.Result;
 import com.fengwenyi.apistarter.exception.ApiException;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -26,19 +25,19 @@ public class Asserts {
 
     /**
      * 失败
-     * @param returnCode {@link IReturnCode}
+     * @param result {@link Result}
      */
-    public static void fail(IReturnCode returnCode) {
-        throw new ApiException(returnCode);
+    public static void fail(Result result) {
+        throw new ApiException(result);
     }
 
     /**
      * 失败
-     * @param returnCode {@link IReturnCode}
+     * @param result {@link Result}
      * @param msg 描述
      */
-    public static void fail(IReturnCode returnCode, String msg) {
-        throw new ApiException(returnCode, msg);
+    public static void fail(Result result, String msg) {
+        throw new ApiException(result, msg);
     }
 
     /**
