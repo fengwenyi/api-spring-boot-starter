@@ -2,9 +2,13 @@
 
 ## v1.3.3
 
-2022.07.23 ~
+2022.07.23 ~ 2022.09.17
 
-- 【升级】Spring Boot 2.6.10
+- 【升级】Spring Boot 2.6.11
+- 【移除】移除 entity 包
+- 【移除】移除 constant 包
+- 【移除】移除 DataException
+- 【移除】移除 ParamException
 
 
 
